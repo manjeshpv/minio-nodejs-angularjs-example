@@ -23,19 +23,28 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 var Minio = require('minio')
+
 var s3Client = new Minio({
   endPoint:  'localhost',
   accessKey: '991OQNY5DUSYGFORMKRX',
   secretKey: 'Gi2CK8DKIAZPoyRtAXDx33xdJ6IzorEzU0j30F5j',
-  insecure: true
-})
+  secure: false
+});
 
-var objectsStream = s3Client.listObjects('applicants', '', true)
-objectsStream.on('data', function(obj) {
-  console.log(obj)
-})
-objectsStream.on('error', function(e) {
-  console.log("e",e)
+s3Client.listBuckets(function(e, bucketStream) {
+  if (e) {
+    console.log(e)
+    return
+  }
+  bucketStream.on('data', function(obj) {
+    console.log(obj)
+  })
+  bucketStream.on('end', function() {
+    console.log("End")
+  })
+  bucketStream.on('error', function(e) {
+    console.log("Error", e)
+  })
 })
 //s3client.listBuckets(function(e, bucketStream) {
   //if (e) {
