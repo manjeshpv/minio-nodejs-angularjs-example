@@ -125,6 +125,17 @@ router.post('/listObjects', function(req, res, next) {
 //Presigned
 //
 //presignedGetObject(bucket, object, expires, cb)
+
+
+router.get('/presignedGetObject', function(req, res, next) {
+  // Presigned get object URL for my-objectname at my-bucketname, it expires in 7 days by default.
+  var expires = 100000;
+  var presignedUrl = s3Client.presignedGetObject('signups', '100.pdf', expires, function (e, presignedUrl) {
+    if (e) return handleError(res,500,e)
+    res.json(presignedUrl)
+  })
+})
+
 //
 //presignedPutObject(bucket, object, expires, cb
 //
