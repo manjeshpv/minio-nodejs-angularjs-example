@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var minioRoutes = require('./routes/minio');
 
 var app = express();
 
@@ -22,39 +23,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var Minio = require('minio')
-var s3Client = new Minio({
-  endPoint:  'localhost',
-  accessKey: '991OQNY5DUSYGFORMKRX',
-  secretKey: 'Gi2CK8DKIAZPoyRtAXDx33xdJ6IzorEzU0j30F5j',
-  secure: false,
-  port: 9000
-});
-
-var objectStream = s3Client.listBuckets(function(e, buckets) {
-  if (e) {
-    console.log(e)
-    return
-  }
-  console.log('bucket: ', buckets)
-})
-//s3client.listBuckets(function(e, bucketStream) {
-  //if (e) {
-  //  console.log("s",e)
-  //  return
-  //}
-  //bucketStream.on('data', function(obj) {
-  //  console.log(obj)
-  //})
-  //bucketStream.on('end', function() {
-  //  console.log("End")
-  //})
-  //bucketStream.on('error', function(e) {
-  //  console.log("Error", e)
-  //})
-//})
 app.use('/', routes);
 app.use('/users', users);
+app.use('/minio', minioRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
