@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require('../nodejs/app');
 var debug = require('debug')('minio-nodejs-example:server');
 var http = require('http');
 
@@ -82,6 +82,7 @@ function onError(error) {
  */
 
 function onListening() {
+  console.log('Express server started using http://localhost:'+port)
   var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr

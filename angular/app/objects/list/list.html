@@ -1,0 +1,65 @@
+<div>
+    <div class="col-md-8">
+        <h1 class="page-header">/{{$ctrl.$stateParams.name}}</h1>
+    </div>
+    <div class="col-md-4 ">
+        Upload: {{$ctrl.progress}} using presignedPut
+        <!--<input type="file" base-sixty-four-input ng-model="$ctrl.file" class="btn btn-primary pull-right" ></input>-->
+        <input type="file" ng-model='$ctrl.file'
+               ngf-select="$ctrl.upload($file)"
+               ngf-drop="$ctrl.upload($file)"
+               name='file'
+               ngf-max-files="1">
+    </div>
+</div>
+<div class="clearfix"></div>
+<div>
+    <div class="col-md-4">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Object</th>
+                    <th>Size</th>
+                    <th>Last Modified</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="object in $ctrl.objects">
+                    <td> <a ng-href="{{$ctrl.downloadUrl(object)}}" ng-bind="object.name"></a></td>
+                    <td ng-bind="object.size"></td>
+                    <td ng-bind="object.lastModified | date"></td>
+                    <td><a class="btn btn-primary" ng-click="$ctrl.view(object)">View</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="col-md-8" ng-if="$ctrl.viewUrl">
+        <iframe style="width:100%;height:600px" ng-src='{{$ctrl.$sce.trustAsResourceUrl($ctrl.viewUrl)}}'> </iframe>
+    </div>
+</div>
+
+<!--<div class="row placeholders">-->
+    <!--<div class="col-xs-6 col-sm-3 placeholder">-->
+        <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">-->
+        <!--<h4>Label</h4>-->
+        <!--<span class="text-muted">Something else</span>-->
+    <!--</div>-->
+    <!--<div class="col-xs-6 col-sm-3 placeholder">-->
+        <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">-->
+        <!--<h4>Label</h4>-->
+        <!--<span class="text-muted">Something else</span>-->
+    <!--</div>-->
+    <!--<div class="col-xs-6 col-sm-3 placeholder">-->
+        <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">-->
+        <!--<h4>Label</h4>-->
+        <!--<span class="text-muted">Something else</span>-->
+    <!--</div>-->
+    <!--<div class="col-xs-6 col-sm-3 placeholder">-->
+        <!--<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">-->
+        <!--<h4>Label</h4>-->
+        <!--<span class="text-muted">Something else</span>-->
+    <!--</div>-->
+<!--</div>-->
