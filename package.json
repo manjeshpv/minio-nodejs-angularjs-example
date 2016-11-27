@@ -1,9 +1,10 @@
 {
   "name": "minio-nodejs-example",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
+  "main": "nodejs/app.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node nodejs/forever.js"
   },
   "dependencies": {
     "bluebird": "^3.4.6",
@@ -11,6 +12,7 @@
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "express": "~4.13.1",
+    "forever": "^0.15.3",
     "fs-promise": "^1.0.0",
     "jade": "~1.11.0",
     "minio": "^2.0.3",

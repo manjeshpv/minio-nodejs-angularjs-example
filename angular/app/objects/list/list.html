@@ -19,6 +19,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>Object</th>
                     <th>Size</th>
                     <th>Last Modified</th>
@@ -26,10 +27,11 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="object in $ctrl.objects">
+                    <td><a class="btn btn-primary" ng-click="$ctrl.view(object)">View</a></td>
                     <td> <a ng-href="{{$ctrl.downloadUrl(object)}}" ng-bind="object.name"></a></td>
                     <td ng-bind="object.size"></td>
                     <td ng-bind="object.lastModified | date"></td>
-                    <td><a class="btn btn-primary" ng-click="$ctrl.view(object)">View</a></td>
+
                 </tr>
                 </tbody>
             </table>

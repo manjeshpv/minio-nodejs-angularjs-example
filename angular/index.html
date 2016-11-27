@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Minio Node.JS and angularjs - Javascript Examples</title>
+    <title>Minio Node.JS and angularjs - Javascript Example - Amazon S3 compatible - Minio Document Store</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="lib/bootstrap-3.3.7/css/bootstrap.min.css">
@@ -44,15 +44,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Minio Angualr and Node JS Examples</a>
+            <a class="navbar-brand" href="#">Minio Angualr and Node JS Example - Minio Document Store</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <!--<ul class="nav navbar-nav navbar-right">-->
-                <!--<li><a href="#">Dashboard</a></li>-->
-                <!--<li><a href="#">Settings</a></li>-->
-                <!--<li><a href="#">Profile</a></li>-->
-                <!--<li><a href="#">Help</a></li>-->
-            <!--</ul>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a target="_blank" href="https://github.com/manjeshpv/minio-nodejs-angularjs-example">Github</a></li>
+                <li><a target="_blank" href="https://github.com/manjeshpv/minio-nodejs-angularjs-example/issues">Issues</a></li>
+                <li><a target="_blank" href="https://docs.minio.io/docs/javascript-client-quickstart-guide">Docs</a></li>
+                <li><a target="_blank" href="https://gitter.im/minio/minio">Help - Gitter</a></li>
+            </ul>
             <!--<form class="navbar-form navbar-right">-->
                 <!--<input type="text" class="form-control" placeholder="Search...">-->
             <!--</form>-->
@@ -77,7 +77,7 @@
             </div>
             <ul class="nav nav-sidebar">
                 <li ng-repeat="bucket in App.buckets | orderBy:'name'" ng-class="{ 'active':bucket.name === App.$stateParams.name}">
-                    <a ui-sref="objects.list({ name: bucket.name })" >
+                    <a ui-sref="objects-list({ name: bucket.name })" >
                          {{bucket.name}}
                         <span class="text-muted">  {{bucket.creationDate | date}}</span>
                     </a>
@@ -122,7 +122,7 @@
 <script src="lib/angular-base64-upload.min.js"></script>
 <script src="lib/ng-file-upload.min.js"></script>
 
-<script src="angular-config.js"></script>
+<script src="api/angular-config.js"></script>
 
 <script src="app/app.js"></script>
 <script src="app/app.controller.js"></script>
