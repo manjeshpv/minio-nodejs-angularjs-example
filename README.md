@@ -46,17 +46,3 @@ module.exports = {
   }
 }
 ```
-
-Change Settings: `angular-config.js`
-
-```js
-  minio = {
-    endPoint: 'localhost',
-    accessKey: 'TQKTLVI8HISTUPGGHJ7E',
-    secretKey: 'BttVU/Lz3qrXAHkXPw8X/3P9x3Ce3wJHxcQ0cKr4',
-    region: 'us-east-1',
-    secure: false,
-    port: 8000,
-  }
-```
-
