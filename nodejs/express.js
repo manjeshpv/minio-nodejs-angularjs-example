@@ -8,6 +8,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var express = require('express');
 
+var config = require('../config')
+
 module.exports = function(app){
 
 // uncomment after placing your favicon in /public
@@ -16,7 +18,7 @@ module.exports = function(app){
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
-  app.use(express.static(path.join('../angular')));
+  app.use(express.static(path.join(config.root + '/angular')));
   app.set('view engine', 'jade');
-
+console.log(config.root )
 }
